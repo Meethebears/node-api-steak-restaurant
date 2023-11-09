@@ -7,7 +7,6 @@ const connectDB = require('./Config/db')
 const products = require('./Routes/product')
 const Product = require('./Models/Products')
 const { default: mongoose } = require('mongoose')
-
 mongoose.Promise = global.Promise;
 
 const app = express();
@@ -18,6 +17,7 @@ app.use(morgan('dev'))
 app.use(cors())
 app.use(bodyPaser.json({ limit: '100mb' }))
 app.use(bodyPaser.urlencoded({ extended: true }))
+app.use('/product', products)
 
 readdirSync('./Routes')
     .map((r) => app.use('/api', require('./Routes/' + r)))
