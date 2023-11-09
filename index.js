@@ -6,6 +6,9 @@ const { readdirSync } = require('fs')
 const connectDB = require('./Config/db')
 const products = require('./Routes/product')
 const Product = require('./Models/Products')
+const { default: mongoose } = require('mongoose')
+
+mongoose.Promise = global.Promise;
 
 const app = express();
 
