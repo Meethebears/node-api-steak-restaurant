@@ -4,8 +4,8 @@ const bodyPaser = require('body-parser')
 const morgan = require('morgan')
 const { readdirSync } = require('fs')
 const connectDB = require('./Config/db')
-const products = require('./Routes/product')
-const Product = require('./Models/Products')
+const products = require('./Routes/products')
+// const Product = require('./Models/Products')
 const { default: mongoose } = require('mongoose')
 mongoose.Promise = global.Promise;
 
@@ -13,11 +13,11 @@ const app = express();
 
 connectDB
 
-app.use(morgan('dev'))
+// app.use(morgan('dev'))
 app.use(cors())
-app.use(bodyPaser.json({ limit: '100mb' }))
-app.use(bodyPaser.urlencoded({ extended: true }))
-app.use('/product', products)
+// app.use(bodyPaser.json({ limit: '100mb' }))
+// app.use(bodyPaser.urlencoded({ extended: true }))
+app.use('/products', products)
 
 // readdirSync('./Routes')
 //     .map((r) => app.use('/api', require('./Routes/' + r)))
