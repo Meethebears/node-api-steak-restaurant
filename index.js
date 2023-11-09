@@ -5,6 +5,8 @@ const morgan = require('morgan')
 const { readdirSync } = require('fs')
 const connectDB = require('./Config/db')
 const products = require('./Routes/product')
+const Product = require('../Models/Products')
+
 const app = express();
 
 connectDB
@@ -15,9 +17,15 @@ app.use(bodyPaser.json({ limit: '100mb' }))
 app.use(bodyPaser.urlencoded({ extended: true }))
 app.use('/product',products)
 
-// app.get('/',(req,res) => {
-//     res.send('This is my API running')
-// })
+app.get('/product',async(req,res) => {
+    try {
+        const producted = await Product.find({}).exec();
+        res.send(producted)
+    } catch (err) {
+        console.log(err);
+        res.status(500).send('Server Error')
+    }
+})
 readdirSync('./Routes')
     .map((r) => app.use('/api', require('./Routes/' + r)))
 
