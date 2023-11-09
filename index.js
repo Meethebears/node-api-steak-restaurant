@@ -5,7 +5,7 @@ const morgan = require('morgan')
 const { readdirSync } = require('fs')
 const connectDB = require('./Config/db')
 const products = require('./Routes/product')
-const Product = require('../server/Models/Products.js')
+// const Product = require('../server/Models/Products.js')
 
 const app = express();
 
