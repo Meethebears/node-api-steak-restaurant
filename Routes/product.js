@@ -11,7 +11,7 @@ const router = express.Router()
 
 router.get('/',(req, res, next) => {
     Product.find((err, products) => {
-        if(err) return next(err);
+        if(err) return next('!!!!!',err);
         res.json(products);
     })
 })
