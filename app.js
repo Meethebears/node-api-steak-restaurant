@@ -26,3 +26,5 @@ readdirSync('./Routes')
 app.listen(5000, () => {
     console.log("Sever Start");
 })
+
+module.exports = app
