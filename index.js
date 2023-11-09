@@ -16,15 +16,6 @@ app.use(cors())
 app.use(bodyPaser.json({ limit: '100mb' }))
 app.use(bodyPaser.urlencoded({ extended: true }))
 
-// app.get('/product',async(req,res) => {
-//     try {
-//         const producted = await Product.find({}).exec();
-//         res.send(producted)
-//     } catch (err) {
-//         console.log(err);
-//         res.status(500).send('Server Error')
-//     }
-// })
 readdirSync('./Routes')
     .map((r) => app.use('/api', require('./Routes/' + r)))
 
