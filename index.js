@@ -1,21 +1,19 @@
 const express = require('express')
-const cors = require('cors')
-const bodyPaser = require('body-parser')
-const morgan = require('morgan')
-const QRcode = require('qrcode')
-const qeneratePayload = require("promptpay-qr")
-const { readdirSync } = require('fs')
+// const cors = require('cors')
+// const bodyPaser = require('body-parser')
+// const morgan = require('morgan')
+// const { readdirSync } = require('fs')
 
-const connectDB = require('./Config/db')
+// const connectDB = require('./Config/db')
 
 const app = express();
 
-connectDB
+// connectDB
 
-app.use(morgan('dev'))
-app.use(cors())
-app.use(bodyPaser.json({ limit: '100mb' }))
-app.use(bodyPaser.urlencoded({ extended: true }))
+// app.use(morgan('dev'))
+// app.use(cors())
+// app.use(bodyPaser.json({ limit: '100mb' }))
+// app.use(bodyPaser.urlencoded({ extended: true }))
 
 app.get('/',(req,res) => {
     res.send('This is my API running')
