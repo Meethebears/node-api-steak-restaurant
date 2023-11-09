@@ -20,11 +20,9 @@ app.use(bodyPaser.urlencoded({ extended: true }))
 app.get('/',(req,res) => {
     res.send('This is my API running')
 })
-readdirSync('./Routes')
-    .map((r) => app.use('/api', require('./Routes/' + r)))
+// readdirSync('./Routes')
+//     .map((r) => app.use('/api', require('./Routes/' + r)))
 
 app.listen(5000, () => {
     console.log("Sever Start");
 })
-
-module.exports = app
