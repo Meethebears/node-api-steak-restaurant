@@ -17,6 +17,9 @@ app.use(cors())
 app.use(bodyPaser.json({ limit: '100mb' }))
 app.use(bodyPaser.urlencoded({ extended: true }))
 
+app.get('/',(req,res) => {
+    res.send('This is my API running')
+})
 readdirSync('./Routes')
     .map((r) => app.use('/api', require('./Routes/' + r)))
 
