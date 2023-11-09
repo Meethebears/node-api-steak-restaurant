@@ -5,7 +5,7 @@ const morgan = require('morgan')
 const { readdirSync } = require('fs')
 const connectDB = require('./Config/db')
 const products = require('./Routes/product')
-// const Product = require('../server/Models/Products.js')
+const Product = require('C:/NewProject/server/Models/Products')
 
 const app = express();
 
@@ -18,7 +18,7 @@ app.use(bodyPaser.urlencoded({ extended: true }))
 
 app.get('/product',async(req,res) => {
     try {
-        const producted = await products.find({}).exec();
+        const producted = await Product.find({}).exec();
         res.send(producted)
     } catch (err) {
         console.log(err);
