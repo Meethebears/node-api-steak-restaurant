@@ -19,8 +19,8 @@ app.use(bodyPaser.json({ limit: '100mb' }))
 app.use(bodyPaser.urlencoded({ extended: true }))
 app.use('/product', products)
 
-readdirSync('./Routes')
-    .map((r) => app.use('/api', require('./Routes/' + r)))
+// readdirSync('./Routes')
+//     .map((r) => app.use('/api', require('./Routes/' + r)))
 
 app.listen(5000, () => {
     console.log("Server Start");
