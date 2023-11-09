@@ -1,12 +1,11 @@
 const mongoose = require('mongoose')
 
+mongoose.Promise = global.Promise;
+
 const connectDB = async () => {
-    try{
-    await mongoose.connect('mongodb://localhost:27017')
-    console.log('DB Connected');
-}catch(err) {
-    console.log(err);
-}
+    await mongoose.connect('mongodb+srv://admin:bank33155@cluster0.iriiwsq.mongodb.net/?retryWrites=true&w=majority')
+    .then(() => console.log('connect success'))
+    .catch((err) => console.error(err))
 }
 
 module.export = connectDB();

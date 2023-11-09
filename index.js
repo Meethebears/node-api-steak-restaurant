@@ -3,9 +3,8 @@ const cors = require('cors')
 const bodyPaser = require('body-parser')
 const morgan = require('morgan')
 const { readdirSync } = require('fs')
-
 const connectDB = require('./Config/db')
-
+const products = require('./Routes/product')
 const app = express();
 
 connectDB
@@ -14,13 +13,11 @@ app.use(morgan('dev'))
 app.use(cors())
 app.use(bodyPaser.json({ limit: '100mb' }))
 app.use(bodyPaser.urlencoded({ extended: true }))
+app.use('/product',products)
 
-app.get('/',(req,res) => {
-    res.send('This is my API running')
-})
-app.get('/product',async(req,res) => {
-    res.send('Product')
-})
+// app.get('/',(req,res) => {
+//     res.send('This is my API running')
+// })
 readdirSync('./Routes')
     .map((r) => app.use('/api', require('./Routes/' + r)))
 
