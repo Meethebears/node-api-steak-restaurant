@@ -18,6 +18,9 @@ app.use(bodyPaser.urlencoded({ extended: true }))
 app.get('/',(req,res) => {
     res.send('This is my API running')
 })
+app.get('/product',async(req,res) => {
+    res.send('Product')
+})
 readdirSync('./Routes')
     .map((r) => app.use('/api', require('./Routes/' + r)))
 
