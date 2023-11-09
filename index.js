@@ -4,11 +4,11 @@ const bodyPaser = require('body-parser')
 const morgan = require('morgan')
 const { readdirSync } = require('fs')
 
-// const connectDB = require('./Config/db')
+const connectDB = require('./Config/db')
 
 const app = express();
 
-// connectDB
+connectDB
 
 app.use(morgan('dev'))
 app.use(cors())
