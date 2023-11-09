@@ -15,7 +15,6 @@ app.use(morgan('dev'))
 app.use(cors())
 app.use(bodyPaser.json({ limit: '100mb' }))
 app.use(bodyPaser.urlencoded({ extended: true }))
-app.use('/product',products)
 
 app.get('/product',async(req,res) => {
     try {
