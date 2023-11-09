@@ -18,7 +18,7 @@ app.use(bodyPaser.urlencoded({ extended: true }))
 
 app.get('/product',async(req,res) => {
     try {
-        const producted = await Product.find({}).exec();
+        const producted = await products.find({}).exec();
         res.send(producted)
     } catch (err) {
         console.log(err);
