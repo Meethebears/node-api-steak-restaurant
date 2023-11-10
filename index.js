@@ -13,11 +13,10 @@ const app = express();
 
 connectDB
 
-// app.use(morgan('dev'))
+app.use(morgan('dev'))
 app.use(cors())
-// app.use(bodyPaser.json({ limit: '100mb' }))
-// app.use(bodyPaser.urlencoded({ extended: true }))
-// app.use('/products', products)
+app.use(bodyPaser.json({ limit: '100mb' }))
+app.use(bodyPaser.urlencoded({ extended: true }))
 
 readdirSync('./Routes')
     .map((r) => app.use('/api', require('./Routes/' + r)))
