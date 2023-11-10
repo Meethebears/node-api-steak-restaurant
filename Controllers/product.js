@@ -12,11 +12,14 @@ exports.read = async (req, res) => {
 
 }
 
-exports.list = async (req, res, next) => {
-    await Product.find((err, products) => {
-        if (err) return next(err)
-        res.json(products)
-    })
+exports.list = async (req, res) => {
+    try {
+        const producted = await Product.find({}).exec();
+        res.send(producted)
+    } catch (err) {
+        console.log(err);
+        res.status(500).send('Server Error')
+    }
 }
 
 exports.create = async (req, res) => {
@@ -44,7 +47,7 @@ exports.update = async (req, res) => {
 exports.remove = async (req, res) => {
     try {
         const id = req.params.id
-        const removed = await Product.findOneAndDelete({ _id: id }).exec()
+        const removed = await Product.findOneAndDelete({_id:id}).exec()
         res.send(removed)
     } catch (err) {
         console.log(err);
