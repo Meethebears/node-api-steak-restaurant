@@ -27,12 +27,4 @@ exports.create = async (req, res) => {
             })
         }
     })
-    // try {
-    //     console.log(req.body);
-    //     const Promptpay = await QRcode(req.body)
-    //     res.send(Promptpay)
-    // } catch (err) {
-    //     console.log(err);
-    //     res.status(400).send('Server Error')
-    // }
 }

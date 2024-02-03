@@ -54,3 +54,14 @@ exports.remove = async (req, res) => {
         res.status(500).send('Server Error')
     }
 }
+
+exports.search = async (req, res) => {
+    let data = await Product.find(
+        {
+            "$or":[
+                {type:{$regex:req.params.key}}
+            ]
+        }
+    )
+    res.send(data);
+}
