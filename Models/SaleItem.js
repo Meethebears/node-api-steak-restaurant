@@ -6,6 +6,7 @@ const SaleItemSchema = new mongoose.Schema({
         price: Number,
         quantity: Number,
     }],
+    tablenumber : String, 
     totalprice : Number,
     updated_at: { type: Date, default: Date.now }
 

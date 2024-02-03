@@ -13,10 +13,12 @@ exports.create = async (req, res) => {
         let order = req.body.order
         let data = {
             order,
+            tablenumber : req.body.tablenumber,
             totalprice : total
           }
         const saleItem = await SaleItems(data).save()
         res.send(saleItem)
+
     } catch (err) {
         console.log(err);
         res.status(500).send('Server Error')
