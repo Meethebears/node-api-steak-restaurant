@@ -8,6 +8,7 @@ const SaleItemSchema = new mongoose.Schema({
     }],
     tablenumber : String, 
     totalprice : Number,
+    payment:String,
     updated_at: { type: Date, default: Date.now }
 
 })

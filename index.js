@@ -4,8 +4,6 @@ const bodyPaser = require('body-parser')
 const morgan = require('morgan')
 const { readdirSync } = require('fs')
 const connectDB = require('./Config/db')
-const products = require('./Routes/products')
-// const Product = require('./Models/Products')
 const { default: mongoose } = require('mongoose')
 mongoose.Promise = global.Promise;
 

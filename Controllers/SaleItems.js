@@ -1,6 +1,18 @@
 const { forEach } = require('lodash');
 const SaleItems = require('../Models/SaleItem')
 
+exports.read = async (req, res) => {
+    try {
+        const id = req.params.id
+        const saleItem = await SaleItems.find({ _id: id }).exec();
+        res.send(saleItem)
+    } catch (err) {
+        console.log(err);
+        res.status(500).send('Sever Error')
+    }
+
+}
+
 exports.create = async (req, res) => {
     try {
         let sum = []
@@ -14,7 +26,8 @@ exports.create = async (req, res) => {
         let data = {
             order,
             tablenumber : req.body.tablenumber,
-            totalprice : total
+            totalprice : total,
+            payment: 'not paid'
           }
         const saleItem = await SaleItems(data).save()
         res.send(saleItem)
@@ -29,6 +42,17 @@ exports.list = async (req, res) => {
     try {
         const SaleItem = await SaleItems.find({}).exec();
         res.send(SaleItem)
+    } catch (err) {
+        console.log(err);
+        res.status(500).send('Server Error')
+    }
+}
+
+exports.update = async (req, res) => {
+    try {
+        const id = req.params.id
+        const updated = await SaleItems.findOneAndUpdate({ _id: id }, req.body, { new: true }).exec()
+        res.send(updated)
     } catch (err) {
         console.log(err);
         res.status(500).send('Server Error')
